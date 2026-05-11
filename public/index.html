@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint Pochara</title>
+    <meta name="description" content="A premium dynamic gallery to download and upload high-quality wallpapers.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-mesh">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+        <div class="mesh-blob blob-3"></div>
+    </div>
+
+    <header class="header neon-glass">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><line x1="12" y1="22" x2="12" y2="12"></line></svg>
+            <h1>Paint Pochara
+            </h1>
+        </div>
+        <button id="upload-btn" class="primary-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            Upload Wallpaper
+        </button>
+    </header>
+
+    <main class="gallery-container">
+        <div class="gallery-header">
+            <h2>Discover Exquisite Wallpapers</h2>
+            <p>Elevate your screen with community-curated high fidelity backgrounds.</p>
+        </div>
+        
+        <div class="category-filters" id="category-filters">
+            <button class="filter-btn active" data-category="All">All</button>
+            <button class="filter-btn" data-category="Nature">Nature</button>
+            <button class="filter-btn" data-category="Anime">Anime</button>
+            <button class="filter-btn" data-category="Minimalist">Minimalist</button>
+            <button class="filter-btn" data-category="Abstract">Abstract</button>
+            <button class="filter-btn" data-category="Cars">Cars</button>
+            <button class="filter-btn" data-category="Other">Other</button>
+        </div>
+        <!-- Loader -->
+        <div id="loader" class="loader"></div>
+        <!-- Grid -->
+        <div class="masonry-grid" id="wallpaper-grid">
+            <!-- Cards will be populated by JS -->
+        </div>
+    </main>
+
+    <!-- Upload Modal -->
+    <div id="upload-modal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <button class="close-btn" id="close-modal">&times;</button>
+            <h2>Spread the beauty</h2>
+            <p>Select a high quality image to upload.</p>
+            <form id="upload-form">
+                <div class="input-group">
+                    <input type="text" id="wallpaper-name" name="name" required class="glass-input" placeholder="Give your wallpaper a magical name (e.g. Neon Horizon)" maxlength="35">
+                </div>
+                <div class="input-group">
+                    <select id="wallpaper-category" name="category" required class="glass-input">
+                        <option value="" disabled selected>Select Wallpaper Category</option>
+                        <option value="Nature">Nature</option>
+                        <option value="Anime">Anime</option>
+                        <option value="Minimalist">Minimalist</option>
+                        <option value="Abstract">Abstract</option>
+                        <option value="Cars">Cars</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="file-drop-area" id="drop-area">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="upload-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                    <p>Drag & Drop or <span class="browse">Browse</span></p>
+                    <input type="file" id="file-input" name="wallpaper" accept="image/png, image/jpeg, image/webp" required>
+                    <div id="file-name-display" class="file-name"></div>
+                </div>
+                <button type="submit" class="submit-btn primary-btn" id="submit-upload" disabled>
+                    <span class="btn-text">Upload Now</span>
+                    <div class="btn-loader hidden"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="modal hidden">
+        <div class="image-modal-content">
+            <button class="close-btn" id="close-image-modal">&times;</button>
+            <img id="full-image" src="" alt="Full Wallpaper" />
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
